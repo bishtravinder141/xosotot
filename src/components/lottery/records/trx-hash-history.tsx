@@ -1,0 +1,67 @@
+import notebook from "@assets/images/general/notebook.png";
+import Ball from "@components/icon/xosotot/ball";
+import LotteryTrxHashDialog from "@components/lottery/trx-hash/dialog";
+import GamingPagination from "@components/shared/gaming-pagination";
+import { LOTTERY_NUMBERS } from "@config/lottery";
+import { getTrxHashWinners } from "@data/lottery/trx-hash";
+import dayjs from "@lib/dayjs";
+import { UnauthorizedError } from "@lib/error";
+import { getTranslations } from "@lib/translation";
+import { rem } from "@lib/utils";
+import NextImage from "next/image";
+
+type LotteryWinGoHistoryProps = {
+  page: number;
+  type: string;
+};
+
+export default async function LotteryTrxHashHistory(props: LotteryWinGoHistoryProps) {
+  const t = await getTranslations();
+  const winners = await getTrxHashWinners(props.type, props.page).catch((error: unknown) => {
+    if (error instanceof UnauthorizedError) {
+      return null;
+    }
+
+    throw error;
+  });
+
+  if (winners === null || winners.meta.pagination.total < 1) {
+    return (
+      <div className="flex flex-col items-center gap-3 py-3">
+        <NextImage alt="Notebook" className="max-w-24" src={notebook} />
+        <p className="text-[0.625rem]">{t("No data available")}</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {winners.data.map((record) => (
+        <div
+          className="flex gap-4 rounded-lg bg-blue-500 bg-card-confetti bg-full bg-center px-4 py-3 text-center text-[0.625rem] leading-4 text-white"
+          key={record.id}
+        >
+          <span className="w-20 text-left">{`${dayjs().format("YYYYMMDD")}${record.id.toString()}`}</span>
+          <LotteryTrxHashDialog block={record.block} />
+          <span className="w-20 grow">{`**${record.block.id.slice(-3)}`}</span>
+          <span className="flex w-12 grow justify-center gap-1">
+            {LOTTERY_NUMBERS.map((number) =>
+              number.value !== record.result ? null : (
+                <Ball className="text-2xl" color={number.color as never} key={number.value} size={rem(16)}>
+                  {number.value}
+                </Ball>
+              ),
+            )}
+            <Ball className="text-2xl" color="yellow" size={rem(16)}>
+              {parseInt(record.result) > 4 ? "B" : "S"}
+            </Ball>
+          </span>
+        </div>
+      ))}
+
+      {winners.meta.pagination.total > winners.meta.pagination.limit && (
+        <GamingPagination {...winners.meta.pagination} className="!mt-9 flex justify-center pb-1" sibling={0} />
+      )}
+    </>
+  );
+}

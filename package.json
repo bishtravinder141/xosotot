@@ -1,0 +1,65 @@
+{
+  "name": "boss-lottery",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.19",
+    "class-variance-authority": "^0.7.0",
+    "dayjs": "^1.11.10",
+    "flickity": "^2.3.0",
+    "gsap": "^3.12.5",
+    "jose": "^5.1.3",
+    "keen-slider": "^6.8.6",
+    "next": "^14.2.3",
+    "next-intl": "^3.5.1",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "qs": "^6.11.2",
+    "react": "^18",
+    "react-bootstrap-icons": "^1.11.4",
+    "react-dom": "^18",
+    "react-slot-counter": "^2.3.2",
+    "react-timer-hook": "^3.0.7",
+    "sharp": "^0.33.0",
+    "sonner": "^1.4.41",
+    "tailwind-merge": "^2.1.0",
+    "use-clipboard-copy": "^0.2.0",
+    "use-sound": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/flickity": "^2.2.11",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20",
+    "@types/qs": "^6.9.11",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vercel/style-guide": "^5.1.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.0",
+    "tailwindcss-safe-area": "^0.5.1",
+    "typescript": "^5"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
+    "plugins": [
+      "prettier-plugin-organize-imports",
+      "@vercel/style-guide/prettier",
+      "prettier-plugin-tailwindcss"
+    ]
+  }
+}

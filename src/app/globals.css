@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    @apply focus:outline-none;
+  }
+}
+
+.flickity-viewport {
+  @apply overflow-hidden;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  @apply cursor-grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  @apply cursor-grabbing;
+}
+
+.flickity-slider {
+  @apply relative;
+}
+
+.flickity-page-dots {
+  @apply mt-3 flex justify-center gap-2;
+}
+
+.flickity-page-dots .dot {
+  @apply size-2.5 rounded-full bg-gray-500 text-transparent;
+}
+
+.flickity-page-dots .dot.is-selected {
+  @apply bg-red-200;
+}
+
+/* Hide the arrows in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+

@@ -1,0 +1,7 @@
+To add a language you must
+1. Add a json file to the dictionaries folder, for the name I used the language code
+https://github.com/amrkamal2025/xosotot/tree/master/src/features/localization/dictionaries
+2. Connect the dictionary to make translations available
+https://github.com/amrkamal2025/xosotot/blob/master/src/features/localization/config/client.ts
+3. Add customization of the name that will be shown during selection
+https://github.com/amrkamal2025/xosotot/blob/master/src/features/localization/config/locales.ts

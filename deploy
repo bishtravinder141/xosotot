@@ -1,0 +1,8 @@
+cd /home/xosotot/public_html
+cd /home/xosotot/homes/xosotot
+
+pm2 start ecosystem.config.js
+npm install
+npm run build
+pm2 restart next-app
+pm2 start next-app
